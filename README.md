@@ -132,7 +132,7 @@ The readme.md file located in the [/TeamCode/src/main/java/org/firstinspires/ftc
 * Fixes [issue #316](https://github.com/FIRST-Tech-Challenge/FtcRobotController/issues/316) (MatrixF.inverted() returned an incorrectly-sized matrix for 1x1 and 2x2 matrixes).
 * Self inspect now allows for Driver Station and Robot Controller compatibility between point releases.
 * Fixes bug where if the same `RumbleEffect` object instance was queued for multiple gamepads, it
-  could happen that both rumble commands would be sent to just one gamepad.
+  could happen that both rumble org.firstinspires.ftc.teamcode.commands would be sent to just one gamepad.
 * Fixes bug in Driver Station where on the Driver Hub, if Advanced Gamepad Features was disabled and
   an officially supported gamepad was connected, then opening the Advanced Gamepad Features or
   Gamepad Type Overrides screens would cause the gamepad to be rebound by the custom USB driver even
@@ -497,7 +497,7 @@ Version 5.5 requires Android Studio 4.0 or later.
         * Displays which hubs reported low battery
     * Displays warning when hub loses and regains power during an OpMode run
         * Fixes the hub's LED pattern after this condition
-    * Displays warning when Expansion Hub is not responding to commands
+    * Displays warning when Expansion Hub is not responding to org.firstinspires.ftc.teamcode.commands
         * Specifies whether the condition is current or occurred temporarily during an OpMode run
     * Clarifies warning when Expansion Hub is not present at startup
         * Specifies that this condition requires a Robot Restart before the hub can be used.
@@ -508,7 +508,7 @@ Version 5.5 requires Android Studio 4.0 or later.
   * A bulk caching mode must be set at the Hub level with `LynxModule#setBulkCachingMode()`. This applies to all relevant SDK hardware classes that reference that Hub.
   * The following following Hub bulk caching modes are available:
     * `BulkCachingMode.OFF` (default): All hardware calls operate as usual. Bulk data can read through `LynxModule#getBulkData()` and processed manually.
-    * `BulkCachingMode.AUTO`: Applicable hardware calls are served from a bulk read cache that is cleared/refreshed automatically to ensure identical commands don't hit the same cache. The cache can also be cleared manually with `LynxModule#clearBulkCache()`, although this is not recommended.
+    * `BulkCachingMode.AUTO`: Applicable hardware calls are served from a bulk read cache that is cleared/refreshed automatically to ensure identical org.firstinspires.ftc.teamcode.commands don't hit the same cache. The cache can also be cleared manually with `LynxModule#clearBulkCache()`, although this is not recommended.
     * (advanced users) `BulkCachingMode.MANUAL`: Same as `BulkCachingMode.AUTO` except the cache is never cleared automatically. To avoid getting stale data, the cache must be manually cleared at the beginning of each loop body or as the user deems appropriate.
 * Removes PIDF Annotation values added in Rev 5.3 (to AndyMark, goBILDA and TETRIX motor configurations).
   * The new motor types will still be available but their Default control behavior will revert back to Rev 5.2

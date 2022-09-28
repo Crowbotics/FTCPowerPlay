@@ -204,7 +204,7 @@ public class ConceptVuforiaFieldNavigationWebcam extends LinearOpMode {
          * WARNING:
          * In this sample, we do not wait for PLAY to be pressed.  Target Tracking is started immediately when INIT is pressed.
          * This sequence is used to enable the new remote DS Camera Preview feature to be used with this sample.
-         * CONSEQUENTLY do not put any driving commands in this loop.
+         * CONSEQUENTLY do not put any driving org.firstinspires.ftc.teamcode.commands in this loop.
          * To restore the normal opmode structure, just un-comment the following line:
          */
 
