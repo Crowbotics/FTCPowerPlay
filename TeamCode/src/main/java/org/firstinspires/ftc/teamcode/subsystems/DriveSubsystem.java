@@ -19,6 +19,10 @@ public class DriveSubsystem extends SubsystemBase {
     private final Motor.Encoder m_frontLeftEncoder, m_rearLeftEncoder, m_frontRightEncoder, m_rearRightEncoder;
     private final double WHEEL_DIAMETER;
 
+    private final RevIMU m_gyro;
+
+    private double heading;
+
     public DriveSubsystem(HardwareMap hMap,
                           final String flName,
                           final String rlName,
@@ -37,14 +41,20 @@ public class DriveSubsystem extends SubsystemBase {
         m_frontRightEncoder = m_frontRight.encoder;
         m_rearRightEncoder = m_rearRight.encoder;
 
+        m_gyro = new RevIMU(hMap, "imu");
+
+        m_gyro.init();
+
         WHEEL_DIAMETER = diameter;
         telemetry = t;
+
+        heading = 0;
 
         m_drive = new MecanumDrive(m_frontLeft, m_frontRight, m_rearLeft, m_rearRight);
     }
 
-    public void drive(double strafe, double fwd, double turn, double angle) {
-        m_drive.driveFieldCentric(-strafe, fwd, turn, -angle);
+    public void drive(double strafe, double fwd, double turn) {
+        m_drive.driveFieldCentric(strafe, fwd, turn, heading);
     }
 
     public double getLeftEncoderVal() {
@@ -74,9 +84,12 @@ public class DriveSubsystem extends SubsystemBase {
 
     public void periodic()
     {
+        heading = m_gyro.getHeading();
+
         telemetry.addData("Left Encoder ", getLeftEncoderVal());
         telemetry.addData("Right Encoder ", getRightEncoderVal());
         telemetry.addData("Distance ", getAverageEncoderDistance());
+        telemetry.addData("Angle Measure: ", heading);
     }
 
 }
