@@ -1,16 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
-import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.RunCommand;
 import com.arcrobotics.ftclib.command.button.GamepadButton;
-import com.arcrobotics.ftclib.command.button.Trigger;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
-import com.arcrobotics.ftclib.hardware.RevIMU;
-import com.arcrobotics.ftclib.hardware.motors.MotorEx;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.commands.ElevatorCommand;
 import org.firstinspires.ftc.teamcode.commands.IntakeCommand;
@@ -20,8 +16,8 @@ import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.ElevatorSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 
-@TeleOp(name="Command Based Op Mode")
-public class CommandBasedOpMode extends CommandOpMode {
+//@Autonomous(name="Auto Park Op Mode")
+public class AutoParkOpMode extends CommandOpMode {
 
     //Subsystem declarations
     DriveSubsystem m_drive;
@@ -108,13 +104,7 @@ public class CommandBasedOpMode extends CommandOpMode {
         m_intakeInButton.whenHeld(m_intakeInCommand);
         m_intakeOutButton.whenHeld(m_intakeOutCommand);
 
-        m_driverGamepad.getGamepadButton(GamepadKeys.Button.A).
-                whenPressed(new InstantCommand(() ->
-                {
-                    m_drive.resetGyro();
-                }));
-
-//        m_testingButton.whenPressed(m_scoreConeCommandGroup);
+        m_testingButton.whenPressed(m_scoreConeCommandGroup);
 
 //        m_driverGamepad.getGamepadButton(GamepadKeys.Button.X).whileHeld(
 //                new InstantCommand(() -> {

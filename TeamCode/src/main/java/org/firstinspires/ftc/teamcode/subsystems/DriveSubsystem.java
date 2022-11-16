@@ -92,4 +92,9 @@ public class DriveSubsystem extends SubsystemBase {
         telemetry.addData("Angle Measure: ", heading);
     }
 
+    public void resetGyro()
+    {
+        m_gyro.reset();
+    }
+
 }

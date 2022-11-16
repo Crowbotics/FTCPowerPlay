@@ -24,11 +24,15 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void in() {
-        this.intakeServo.rotateBy(10);
+        this.intakeServo.setPosition(1);
     }
 
     public void out() {
-        this.intakeServo.rotateBy(-10);
+        this.intakeServo.setPosition(0);
+    }
+
+    public void stop() {
+        this.intakeServo.setPosition(.5);
     }
 
     public void periodic()

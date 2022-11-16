@@ -30,7 +30,9 @@ public class MecanumDriveCommand extends CommandBase {
 
     @Override
     public void execute(){
-        m_drive.drive(m_strafe.getAsDouble() * m_speed, m_forward.getAsDouble() * m_speed, m_turn.getAsDouble() * m_speed);
+        m_drive.drive(m_strafe.getAsDouble() * -m_speed,
+                m_forward.getAsDouble() * -m_speed, //Flipped for left/right change
+                m_turn.getAsDouble() * -m_speed);
     }
 
 }
